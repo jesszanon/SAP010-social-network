@@ -40,7 +40,6 @@ export default () => {
     container.innerHTML = template;
 
 
-
     const btnPublicar = container.querySelector('.btn')
     const conteudo = container.querySelector('.input-publish')
     const formFeed = container.querySelector('.form-feed')
