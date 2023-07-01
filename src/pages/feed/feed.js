@@ -1,23 +1,19 @@
-
 import { getDoc, doc } from "firebase/firestore";
 import { db, auth } from "../../lib/firebase";
 import { logout } from "../../lib";
 import {
-    pegarPost,
-    criarPost,
-    likePost,
-    deletarPost
-
+  pegarPost,
+  criarPost,
+  likePost,
+  deletarPost,
 } from "../../lib/firestone";
 
-
-let userName = ''
-
+let userName = "";
 
 export default () => {
-    const container = document.createElement('div');
+  const container = document.createElement("div");
 
-    const template = `
+  const template = `
 
     <header class="header-feed">
     <img src="imagens/logo branca feed.png" class="logo-feed"> 
@@ -37,126 +33,116 @@ export default () => {
   </section>   
 `;
 
-    container.innerHTML = template;
+  container.innerHTML = template;
 
+  const btnPublicar = container.querySelector(".btn");
+  const conteudo = container.querySelector(".input-publish");
+  const formFeed = container.querySelector(".form-feed");
+  const alertPublish = container.querySelector(".alert-publish");
 
-    const btnPublicar = container.querySelector('.btn')
-    const conteudo = container.querySelector('.input-publish')
-    const formFeed = container.querySelector('.form-feed')
-    const alertPublish = container.querySelector('.alert-publish')
+  btnPublicar.addEventListener("click", () => {
+    const conteudoInput = conteudo.value;
+    if (conteudoInput !== "") {
+      criarPost(conteudoInput)
+        .then(() => {
+          mostrarPost();
+          formFeed.reset();
+          alertPublish.setAttribute("style", "display: none");
+        })
+        .catch((error) => {
+          console.log(error);
+          alertPublish.setAttribute("style", "display: block");
+          alertPublish.innerHTML = "Ocorreu um erro, tente novamente.";
+        });
+    } else {
+      alertPublish.setAttribute("style", "display: block");
+      alertPublish.innerHTML = "Por favor, escreva algo antes de publicar!";
+    }
+  });
 
+  async function mostrarPost() {
+    const arrayPost = await pegarPost();
+    const postContainer = container.querySelector("#postContainer");
+    postContainer.innerHTML = "";
 
-
-    btnPublicar.addEventListener('click', () => {
-        const conteudoInput = conteudo.value;
-        if (conteudoInput !== '') {
-            criarPost(conteudoInput)
-                .then(() => {
-                    mostrarPost();
-                    formFeed.reset();
-                    alertPublish.setAttribute('style', 'display: none');
-                })
-                .catch((error) => {
-                    console.log(error)
-                    alertPublish.setAttribute('style', 'display: block');
-                    alertPublish.innerHTML = 'Ocorreu um erro, tente novamente.';
-                });
-        } else {
-            alertPublish.setAttribute('style', 'display: block');
-            alertPublish.innerHTML = 'Por favor, escreva algo antes de publicar!';
-        }
-    });
-
-    async function mostrarPost() {
-
-        const arrayPost = await pegarPost();
-        const postContainer = container.querySelector('#postContainer')
-        postContainer.innerHTML = '';
-
-        arrayPost.forEach((post) => {
-            const postar = document.createElement('div')
-            postar.innerHTML =
-
-                ` <section class="conteudo">
+    arrayPost.forEach((post) => {
+      const postar = document.createElement("div");
+      postar.innerHTML = ` <section class="conteudo">
                         <h3 class="nome"> ${post.name}</h3>
                         <p class="conteudoPag"> ${post.texto}</p>
                          <div class="btns">
-                             <button class="btnLike" ${post.like.includes(auth.currentUser.uid) ? ' liked' : ''}" data-post-id="${post.id}">❤️</button>
-                             <span class="contadorLike"> ${post.like.length}</span>
-                             <button class="btnEditar" data-post-id="${post.id}"> ✏️ </button>
-                             <button class="btnDeletar" data-post-id="${post.id}"> 🗑️ </button>
+                             <button class="btnLike" ${
+                               post.like.includes(auth.currentUser.uid)
+                                 ? " liked"
+                                 : ""
+                             }" data-post-id="${post.id}">❤️</button>
+                             <span class="contadorLike"> ${
+                               post.like.length
+                             }</span>
+                             <button class="btnEditar" data-post-id="${
+                               post.id
+                             }"> ✏️ </button>
+                             <button class="btnDeletar" data-post-id="${
+                               post.id
+                             }"> 🗑️ </button>
                          </div>
                     </section>
-                    `
+                    `;
 
-            postContainer.appendChild(postar)
+      postContainer.appendChild(postar);
 
-            const btnLike = postar.querySelector('.btnLike')
+      const btnLike = postar.querySelector(".btnLike");
 
+      btnLike.addEventListener("click", async () => {
+        const postId = btnLike.getAttribute("data-post-id");
+        const contadorLike = postar.querySelector(".contadorLike");
 
-            btnLike.addEventListener('click', async () => {
-                const postId = btnLike.getAttribute('data-post-id');
-                const contadorLike = postar.querySelector('.contadorLike')
+        try {
+          await likePost(db, postId, auth.currentUser.uid, auth);
+          const atualizar = await getDoc(doc(db, "post", postId));
+          const atualizarLikes = atualizar.data().like.length;
+          contadorLike.textContent = atualizarLikes;
 
-                try {
+          if (atualizar.data().like.includes(auth.currentUser.uid)) {
+            btnLike.classList.add("liked");
+          } else {
+            btnLike.classList.remove("liked");
+          }
+        } catch (error) {
+          console.log("Error", error);
+        }
+      });
 
-                    await likePost(db, postId, auth.currentUser.uid, auth);
-                    const atualizar = await getDoc(doc(db, 'post', postId));
-                    const atualizarLikes = atualizar.data().like.length;
-                    contadorLike.textContent = atualizarLikes;
+      const btnDeletar = postar.querySelector(".btnDeletar");
+      btnDeletar.addEventListener("click", async () => {
+        const idPost = btnDeletar.getAttribute("data-post-id");
+        if (post.author === auth.currentUser.uid) {
+          if (confirm("Tem certeza que deseja excluir esse post?")) {
+            try {
+              await deletarPost(idPost);
+              postar.remove();
+            } catch (error) {
+              console.log("Erro ao exclur post:, error");
+            }
+          } else {
+            alert("Você só pode excluir seus próprios posts.");
+          }
+        }
+      });
+    });
 
-
-                    if (atualizar.data().like.includes(auth.currentUser.uid)) {
-                        btnLike.classList.add('liked');
-                    } else {
-                        btnLike.classList.remove('liked');
-                    }
-                } catch (error) {
-                    console.log('Error', error);
-
-
-                }
-            })
-
-
-
-            const btnDeletar = postar.querySelector('.btnDeletar')
-            btnDeletar.addEventListener('click', async () => {
-                const idPost = btnDeletar.getAttribute('data-post-id');
-                if (post.author === auth.currentUser.uid) {
-                if (confirm('Tem certeza que deseja excluir esse post?')) {
-                    try {
-                        await deletarPost(idPost);
-                        postar.remove();
-                       
-                    } catch (error) {
-                        console.log('Erro ao exclur post:, error');
-                    }
-
-                } else {
-                    alert('Você só pode excluir seus próprios posts.');
-                }
-            });
-
-
+    const botaoSair = container.querySelector(".btnSair");
+    botaoSair.addEventListener("click", () => {
+      logout()
+        .then(() => {
+          window.location.hash = "#home";
+        })
+        .catch(() => {
+          alert("Erro ao Sair");
         });
+    });
+  }
+  mostrarPost();
 
-        const botaoSair = container.querySelector('.btnSair')
-        botaoSair.addEventListener('click', () => {
-            logout()
-                .then(() => {
-                    window.location.hash = '#home';
-                })
-                .catch(() => {
-                    alert('Erro ao Sair');
-                });
-
-        });
-
-
-    }
-    mostrarPost()
-
-    return container;
-
+  return container;
 };
