@@ -6,6 +6,7 @@ import {
   criarPost,
   likePost,
   deletarPost,
+  editarPost
 } from "../../lib/firestone";
 
 let userName = "";
@@ -113,11 +114,26 @@ export default () => {
         }
       });
 
+      const btnEditar = postar.querySelector(".btnEditar");
+      btnEditar.addEventListener('click', () => {
+        const postId = btnEditar.getAttribute('data-post-id');
+        if (post.author === auth.currentUser.uid) {
+          const textoEditado = prompt('Digite o novo texto:');
+          if (textoEditado) {
+            editarPost(postId, textoEditado);
+            postar.querySelector('.conteudoPag').textContent = textoEditado;
+          }
+        } else {
+          alert('Você só pode editar a sua publicação!');
+        }
+      });
+
+
       const btnDeletar = postar.querySelector(".btnDeletar");
       btnDeletar.addEventListener("click", async () => {
         const idPost = btnDeletar.getAttribute("data-post-id");
         if (post.author === auth.currentUser.uid) {
-          if (confirm("Tem certeza que deseja excluir esse post?")) {
+          if (confirm("Tem certeza que deseja excluir essa publicação?")) {
             try {
               await deletarPost(idPost);
               postar.remove();
@@ -125,7 +141,7 @@ export default () => {
               console.log("Erro ao exclur post:, error");
             }
           } else {
-            alert("Você só pode excluir seus próprios posts.");
+            alert("Você só pode excluir a sua publicação!");
           }
         }
       });
@@ -138,7 +154,7 @@ export default () => {
           window.location.hash = "#home";
         })
         .catch(() => {
-          alert("Erro ao Sair");
+          alert("Erro ao Sair!");
         });
     });
   }

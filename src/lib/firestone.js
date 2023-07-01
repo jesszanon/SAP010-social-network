@@ -13,6 +13,7 @@ import {
 } from "firebase/firestore";
 
 
+
 const db = getFirestore(app);
 
 //criar post no banco de dados
@@ -69,6 +70,11 @@ export const likePost = async (db,  postId, userId) => {
   
     await updateDoc(postRef, { like: updatedLikeArray });
 };
+
+export const editarPost = async (idPost, textPost) => {
+    const editPost = doc(db, 'post', idPost);
+    await updateDoc(editPost, {content:textPost});
+}
 
 export const deletarPost = async (idPost) => {
     const deletPost = await deleteDoc(doc(db, 'post', idPost));
