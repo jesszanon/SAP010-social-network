@@ -6,8 +6,8 @@ import {
   getAuth
 } from "firebase/auth";
 import { loginGoogle, loginUser, signUpUser } from "../src/lib/index";
-import { criarPost, pegarPost, deletarPost } from "../src/lib/firestone";
-import { addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { criarPost, pegarPost, deletarPost, likePost, editarPost } from "../src/lib/firestone";
+import { addDoc, getDocs, deleteDoc, doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 
 
 jest.mock("firebase/auth");
@@ -118,5 +118,37 @@ describe('deletarPost', () => {
     expect(doc).toHaveBeenCalledWith(undefined, 'post', mockPostCollection.posts.postId);
     expect(deleteDoc).toHaveBeenCalledTimes(1);
     expect(deleteDoc).toHaveBeenCalledWith(mockRef);
+  });
+});
+describe('likePost', () => {
+  it('deve contabilizar like no banco de dados', async () => {
+    const postId = 'IqTvgPPiC0PQTTlPeSdg';
+    const db = getFirestore();
+    const docRef = doc(db, 'post', postId);
+    const updateDocMock = jest.fn();
+
+    const postSnap = { data: () => ({ like: [] }) };
+
+    const getDocMock = jest.fn().mockResolvedValue(postSnap);
+    getDoc.mockImplementation(getDocMock);
+
+    updateDoc.mockImplementation(updateDocMock);
+
+    await likePost(db, postId);
+
+    expect(updateDocMock).toHaveBeenNthCalledWith(1, docRef, { like: [undefined] });
+  });
+});
+describe('editarPost', () => {
+  it('deve editar as postagens do feed', async () => {
+    const postId = 'postId';
+    const textEdit = {
+      content: 'novo input',
+    };
+    updateDoc.mockResolvedValueOnce();
+
+    await editarPost(postId, textEdit);
+
+    expect(updateDoc).toHaveBeenCalledTimes(1);
   });
 });

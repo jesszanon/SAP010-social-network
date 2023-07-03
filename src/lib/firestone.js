@@ -52,11 +52,8 @@ export const pegarPost = async () => {
 
 
 export const likePost = async (db,  postId, userId) => {
-    const currentUser = auth.currentUser;
-    if (!currentUser) {
-      throw new Error('Usuário não está logado');
-    }
-  
+    
+
     const postRef = doc(db, 'post', postId);
     const postSnap = await getDoc(postRef);
     const postData = postSnap.data();
