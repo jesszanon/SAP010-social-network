@@ -17,12 +17,14 @@ export default () => {
   const template = `
 
     <header class="header-feed">
-    <img src="imagens/logo branca feed.png" class="logo-feed"> 
-    <button class="btnSair" id="btn_Sair" type="button">Sair</button> 
-    <h4>  Olá, ${auth.currentUser.displayName} !<br> Bora Economizar? </h4>
+        <img src="imagens/logo branca feed.png" class="logo-feed"> 
+        <button class="btnSair" id="btn_Sair" type="button">Sair</button> 
+      <h4>  Olá, ${auth.currentUser.displayName} !<br> Bora Economizar? </h4>
     </header>
-
-  <form id="formFeed" class="form-feed">
+    <div class="containerFeed">
+      <img class="fundo" src="imagens/fundo2.png" alt="imagem-fundo">
+    </div>
+    <form id="formFeed" class="form-feed">
     <label class="inputPubli" for="text">
       <input id="post" class="input-publish" name="text" type="text" placeholder="Clique aqui para digitar seu CUPOM!">
     </label>
