@@ -225,7 +225,7 @@ footer{
     margin-left: 18%;
     margin-top: 2%;
 } 
- @media screen and (min-width: 414px) and (max-width:900px){
+ @media screen and (max-width:450px){
     
     .fundo1{
         display: none;

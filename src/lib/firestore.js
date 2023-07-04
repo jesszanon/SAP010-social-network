@@ -9,7 +9,7 @@ import {
   updateDoc,
   deleteDoc,
 } from 'firebase/firestore';
-import { app, auth } from './firebase.js';
+import { app } from './firebase.js';
 
 const db = getFirestore(app);
 
@@ -37,21 +37,8 @@ export const pegarPost = async () => {
   return postArray;
 };
 
-export const likePost = async (db, postId, userId) => {
-  const postRef = doc(db, 'post', postId);
-  const postSnap = await getDoc(postRef);
-  const postData = postSnap.data();
-
-  const isLiked = postData.like.includes(userId);
-
-  const updatedLikeArray = isLiked
-    ? postData.like.filter((id) => id !== userId)
-    : [...postData.like, userId];
-
 
 export const likePost = async (db,  postId, userId) => {
-    
-
     const postRef = doc(db, 'post', postId);
     const postSnap = await getDoc(postRef);
     const postData = postSnap.data();

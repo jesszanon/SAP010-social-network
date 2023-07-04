@@ -7,7 +7,7 @@ import {
   likePost,
   deletarPost,
   editarPost,
-} from '../../lib/firestone';
+} from '../../lib/firestore';
 
 export default () => {
   const container = document.createElement('div');
@@ -15,23 +15,23 @@ export default () => {
   const template = `
 
     <header class='header-feed'>
-        <img src='imagens/logo branca feed.png' class='logo-feed'> 
-        <button class='btnSair' id='btn_Sair' type='button'>Sair</button> 
+      <img src='imagens/logo branca feed.png' class='logo-feed'> 
+      <button class='btnSair' id='btn_Sair' type='button'>Sair</button> 
       <h4>  Olá, ${auth.currentUser.displayName} !<br> Bora Economizar? </h4>
     </header>
     <div class='containerFeed'>
       <img class='fundo' src='imagens/fundo2.png' alt='imagem-fundo'>
     </div>
-    <form id='formFeed' class='form-feed'>
-    <label class='inputPubli' for='text'>
-      <input id='post' class='input-publish' name='text' type='text' placeholder='Clique aqui para digitar seu CUPOM!'>
-    </label>
-    <span id='alertPublish' class='alert-publish'></span>
-    <button class='btn' id='btnPubli' type='button'>Publicar</button>  
-    </form>
-   <section 
-    id='postContainer' class='post-container'>
-  </section>   
+      <form id='formFeed' class='form-feed'>
+        <label class='inputPubli' for='text'>
+        <input id='post' class='input-publish' name='text' type='text' placeholder='Clique aqui para digitar seu CUPOM!'>
+        </label>
+        <span id='alertPublish' class='alert-publish'></span>
+        <button class='btn' id='btnPubli' type='button'>Publicar</button>  
+      </form>
+    <section 
+      id='postContainer' class='post-container'>
+    </section>   
 `;
 
   container.innerHTML = template;
