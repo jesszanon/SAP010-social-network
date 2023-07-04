@@ -7,7 +7,7 @@ import {
   likePost,
   deletarPost,
   editarPost,
-} from '../../lib/firestore';
+} from '../../lib/firestone';
 
 export default () => {
   const container = document.createElement('div');

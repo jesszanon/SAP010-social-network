@@ -12,7 +12,7 @@ import {
   doc 
 } from 'firebase/firestore';
 import { loginGoogle, loginUser, signUpUser } from '../src/lib/index';
-import { criarPost, pegarPost, deletarPost } from '../src/lib/firestore';
+import { criarPost, pegarPost, deletarPost } from '../src/lib/firestone';
 
 jest.mock('firebase/auth');
 jest.mock('firebase/firestore');
