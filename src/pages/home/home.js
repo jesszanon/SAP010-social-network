@@ -4,6 +4,9 @@ export default () => {
   const container = document.createElement("div");
 
   const template = `
+  <div class="containerHome">
+     <img class="fundo1" src="imagens/fundo.png" alt="imagem-fundo1">
+   </div>
   <div class="container" id="container-template">
   <header>
     <img class="logo" src="imagens/logo mania.png" alt="logo" />
