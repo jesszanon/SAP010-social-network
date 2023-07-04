@@ -109,4 +109,65 @@ h4 {
         cursor: pointer;
         background: #F5B81D;
 
+}@media screen and (min-width: 270px) and (max-width:900px){
+    
+    .logo-feed{
+       width: 30%;
+    }
+    .header-feed {
+      
+      height: 150%;
+      width: 450px;
+    }
+    
+    .fundo {
+        
+        width: 480px;
+        height: 400px;
+        margin-left: -40px;
+    }
+
+    
+   h4 {
+        
+        margin-top: -40px;
+        font-size: 20px;
+        margin-left: 50px;
+        
+    }
+
+    .input-publish {  
+        margin-top: 10px;
+        left: 50%;
+        width: 86%;
+        height: 80px;
+        font-size: 20px;
+    }
+
+    .conteudo {
+        top: 80px;
+        width: 70%;
+        height: 200px;
+        border-radius: 2px;
+    }
+
+    .nome,.conteudoPag{
+        font-size: 18px;
+    
+    }
+
+    .btn {
+        width: 55px;
+        height: 28px;
+        left: 80%;
+        top: 100px;
+    
+    }
+    .btnSair{
+        width: 35px;
+        height: 27px;
+        border-radius: 10px;
+        left: 52%;
+        top: 15px;
+    }
 }
