@@ -9,10 +9,14 @@ import {
   addDoc, 
   getDocs, 
   deleteDoc, 
-  doc 
+  doc,
+  getFirestore,
+  updateDoc,
+  getDoc 
 } from 'firebase/firestore';
 import { loginGoogle, loginUser, signUpUser } from '../src/lib/index';
-import { criarPost, pegarPost, deletarPost } from '../src/lib/firestone';
+import { criarPost, pegarPost, deletarPost, editarPost, likePost } from '../src/lib/firestore';
+
 
 jest.mock('firebase/auth');
 jest.mock('firebase/firestore');
