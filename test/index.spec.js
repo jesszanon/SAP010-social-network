@@ -3,36 +3,44 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   auth,
-  getAuth
-} from "firebase/auth";
-import { loginGoogle, loginUser, signUpUser } from "../src/lib/index";
-import { criarPost, pegarPost, deletarPost, likePost, editarPost } from "../src/lib/firestone";
-import { addDoc, getDocs, deleteDoc, doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
+  getAuth,
+} from 'firebase/auth';
+import { 
+  addDoc, 
+  getDocs, 
+  deleteDoc, 
+  doc,
+  getFirestore,
+  updateDoc,
+  getDoc 
+} from 'firebase/firestore';
+import { loginGoogle, loginUser, signUpUser } from '../src/lib/index';
+import { criarPost, pegarPost, deletarPost, editarPost, likePost } from '../src/lib/firestore';
 
 
-jest.mock("firebase/auth");
+jest.mock('firebase/auth');
 jest.mock('firebase/firestore');
 beforeEach(() => {
   jest.clearAllMocks();
 });
 
-describe("loginGoogle", () => {
-  it("Deve ser uma função de logar com google", async () => {
+describe('loginGoogle', () => {
+  it('Deve ser uma função de logar com google', async () => {
     signInWithPopup.mockResolvedValueOnce();
     await loginGoogle();
     expect(signInWithPopup).toHaveBeenCalledTimes(1);
   });
 });
 
-describe("createUser", () => {
-  it("criando um usuário", async () => {
+describe('createUser', () => {
+  it('criando um usuário', async () => {
     const user = {
-      name: "Jessica",
-      email: "test@hotmail.com",
-      password: "345678",
+      name: 'Jessica',
+      email: 'test@hotmail.com',
+      password: '345678',
     };
-    const mockAppAuth = {currentUser:'jessica'}
-    getAuth.mockReturnValueOnce(mockAppAuth)
+    const mockAppAuth = {currentUser:'jessica'};
+    getAuth.mockReturnValueOnce(mockAppAuth);
 
     createUserWithEmailAndPassword.mockResolvedValue({ user });
     await signUpUser(user.name,user.email, user.password);
@@ -46,16 +54,16 @@ describe("createUser", () => {
   });
 });
 
-describe("loginUser", () => {
-  it("logar com e-mail", async () => {
-    const email = "test2@hotmail.com";
-    const password = "98765432";
+describe('loginUser', () => {
+  it('logar com e-mail', async () => {
+    const email = 'test2@hotmail.com';
+    const password = '98765432';
     signInWithEmailAndPassword.mockResolvedValueOnce();
     await loginUser(email, password);
     expect(signInWithEmailAndPassword).toHaveBeenCalledWith(
       auth,
       email,
-      password
+      password,
     );
   });
 });
@@ -93,7 +101,7 @@ describe('pegarPost', () => {
       like: [],
       name: {},
       texto: {},
-      data: ()=> ({})
+      data: ()=> ({}),
     }]);
     pegarPost('x4H2994HPjV9zm6cp7am58XTjci2', '0pRNd4MNFXm3QAI2TYeL', ['J5rtQSlAJqO13E7znQknbvC236U2', 'scbc2YPdX5gnlsKodSzDLh3mpPr2'], 'Thalita', 'Parabéns!');
     expect(getDocs).toHaveBeenCalledTimes(1);
