@@ -10,6 +10,7 @@
 .header-feed {
     background: black;
     height: 150px;
+    width: 100%;
     
 }
 
@@ -26,7 +27,7 @@
 
 .fundo {
     position: absolute;
-    width: 1000px;
+    width: 100%;
     height: 800px;
     margin-left: 150px;
 }
@@ -109,7 +110,7 @@ h4 {
         cursor: pointer;
         background: #F5B81D;
 
-}@media screen and (min-width: 270px) and (max-width:900px){
+}@media screen and (min-width: 270px) and (max-width:1500px){
     
     .logo-feed{
        width: 30%;
@@ -117,12 +118,11 @@ h4 {
     .header-feed {
       
       height: 150%;
-      width: 450px;
     }
     
     .fundo {
         
-        width: 480px;
+        width: 100%;
         height: 400px;
         margin-left: -40px;
     }
@@ -132,13 +132,13 @@ h4 {
         
         margin-top: -40px;
         font-size: 20px;
-        margin-left: 50px;
+        margin-left: 10px;
         
     }
 
     .input-publish {  
         margin-top: 10px;
-        left: 50%;
+        left: 48%;
         width: 86%;
         height: 80px;
         font-size: 20px;
@@ -167,7 +167,7 @@ h4 {
         width: 35px;
         height: 27px;
         border-radius: 10px;
-        left: 52%;
-        top: 15px;
+        left: 90%;
+        top: -5px;
     }
 }

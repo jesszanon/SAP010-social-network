@@ -18,8 +18,8 @@ export default () => {
 
     <header class="header-feed">
         <img src="imagens/logo branca feed.png" class="logo-feed"> 
+        <h4>  Olá, ${auth.currentUser.displayName} !<br> Bora Economizar? </h4>
         <button class="btnSair" id="btn_Sair" type="button">Sair</button> 
-      <h4>  Olá, ${auth.currentUser.displayName} !<br> Bora Economizar? </h4>
     </header>
     <div class="containerFeed">
       <img class="fundo" src="imagens/fundo2.png" alt="imagem-fundo">
