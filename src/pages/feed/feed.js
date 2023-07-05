@@ -8,6 +8,8 @@ import {
   deletarPost,
   editarPost,
 } from '../../lib/firestore';
+import fundo2 from '../../imagens/fundo2.png';
+import logobranca from '../../imagens/logobranca.png';
 
 export default () => {
   const container = document.createElement('div');
@@ -16,12 +18,12 @@ export default () => {
 
 
     <header class="header-feed">
-        <img src="imagens/logo branca feed.png" class="logo-feed"> 
+        <img src="${logobranca}" class="logo-feed"> 
         <h4>  Olá, ${auth.currentUser.displayName} !<br> Bora Economizar? </h4>
         <button class="btnSair" id="btn_Sair" type="button">Sair</button> 
     </header>
     <div class='containerFeed'>
-      <img class='fundo' src='imagens/fundo2.png' alt='imagem-fundo'>
+      <img class='fundo' src='${fundo2}' alt='imagem-fundo'>
     </div>
       <form id='formFeed' class='form-feed'>
         <label class='inputPubli' for='text'>
