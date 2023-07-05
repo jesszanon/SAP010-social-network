@@ -1,18 +1,22 @@
 import { loginUser, loginGoogle } from '../../lib';
+import fundo from '../../imagens/fundo.png';
+import logomania from '../../imagens/logomania.png';
+import etiqueta from '../../imagens/etiqueta.png';
+import google from '../../imagens/google.png';
 
 export default () => {
   const container = document.createElement('div');
 
   const template = `
   <div class='containerHome'>
-     <img class='fundo1' src='imagens/fundo.png' alt='imagem-fundo1'>
+     <img class='fundo1' src='${fundo}' alt='imagem-fundo1'>
    </div>
   <div class='container' id='container-template'>
   <header>
-    <img class='logo' src='imagens/logo mania.png' alt='logo' />
+    <img class='logo' src='${logomania}' alt='logo' />
   </header>
        <form class='form' id='form'>
-           <img class='etiqueta' src='imagens/etiqueta de desconto preta.png' alt='etiqueta' />
+           <img class='etiqueta' src='${etiqueta}' alt='etiqueta' />
            <h2>  A REDE SOCIAL PARA QUEM <br>GOSTA DE ECONOMIZAR!</h2>
            <p class='email'>
            <input type='text' class='inserir_email' id='inseriremail' placeholder='Digite seu e-mail'/>
@@ -28,7 +32,7 @@ export default () => {
        </p>
        <span id='usuarioAlertHome' class='alertHome'></span>
        <p class='form'>
-         <button class='logarGoogle' id='btnGoogle'><img src='imagens/google.png'> Entrar com Google</button>
+         <button class='logarGoogle' id='btnGoogle'><img src='${google}'> Entrar com Google</button>
        <p class='form'>
          <a href='/#cadastrar' type='button' class='btnCadastrar' id='btnCadastrar'>CADASTRE-SE</a>
        </p>
