@@ -35,7 +35,7 @@ body{
 .logo {
     position: relative;
     display: flex;
-     width: 320px;
+    width: 320px;
     height: 140px;
     margin-left: 60px; 
 }
@@ -258,8 +258,4 @@ div i{
     float:left;
    margin:10px 0px 0px -30px;
 }
-@media screen and (min-width: 420px) {
-    .logo {
-   margin-left: 80%;
-    }
-}  
+
