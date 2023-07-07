@@ -33,7 +33,7 @@ body{
 .logo {
     position: relative;
     display: flex;
-     width: 320px;
+    width: 320px;
     height: 140px;
     margin-left: 60px; 
 }
