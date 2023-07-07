@@ -30,9 +30,14 @@ O "Social Network" foi o terceiro projeto proposto pela Laboratória com o objet
 
 ----
 ## 2. História do Usuário
-Neste projeto nós construímos um aplicativo de rede social (MANIA DE CUPOM) que permite ao usuário compartilhar e aproveitar os cupons que foram publicados por outros usuários. A ideia é divulgar as promoções e interagir com mais pessoas que sejam apaixonadas por economizar.
+Dividimos as histórias de usuários em algumas partes e na primeira, nós como usuários gostaríamos de fazer um cadastro com nome, e-mail e senha e também ter a chance de logar com google pela praticidade.
 
-O usuário poderá se cadastrar no aplicativo com seus dados e/ou entrar com o login do google. Na plataforma poderá publicar seus cupons, editar e excluir, além de curtir postagens de outras pessoas.
+Após esse cadastro e poder me logar, gostaríamos de navegar um por um feed onde tivesse cupons compartilhados e pudesse compartilhar os nossos cupons também.
+Além de poder curtir as publicações dos outros usuários, editar meu post caso tivesse algum erro e deletar caso o cupom não tivesse funcionando, assim podendo publicar outro para ajudar meus amigos da rede.
+
+Outra história do usuário que será atualizada futuramente é a parte do push, sempre que tiver um cupom imperdível, um push avisaria o usuário do aplicativo através do firebase.
+
+Num momento futuro gostaríamos também de liberar cupons através de vídeos e jogos assistidos, uma forma de incentivar patrocinadores a investirem no App Mania de Cupom. 
 
 
 ----
