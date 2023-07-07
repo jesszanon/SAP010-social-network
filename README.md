@@ -35,6 +35,8 @@ Dividimos as histórias de usuários em algumas partes e na primeira, nós como 
 Após esse cadastro e poder me logar, gostaríamos de navegar um por um feed onde tivesse cupons compartilhados e pudesse compartilhar os nossos cupons também.
 Além de poder curtir as publicações dos outros usuários, editar meu post caso tivesse algum erro e deletar caso o cupom não tivesse funcionando, assim podendo publicar outro para ajudar meus amigos da rede.
 
+Pedimos para alguns usuários testarem o App e eles conseguiram acessar sem problema algum e ainda ficaram felizes em poder compartilhar e pegar cupons.
+
 Outra história do usuário que será atualizada futuramente é a parte do push, sempre que tiver um cupom imperdível, um push avisaria o usuário do aplicativo através do firebase.
 
 Num momento futuro gostaríamos também de liberar cupons através de vídeos e jogos assistidos, uma forma de incentivar patrocinadores a investirem no App Mania de Cupom. 
