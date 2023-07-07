@@ -68,7 +68,7 @@ export default () => {
         if (
           errorMessage === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
           usuarioAlert.setAttribute('style', 'display: block');
-          usuarioAlert.innerHTML = 'Sua senha deve ter ao menos 6 dígitos!';
+          usuarioAlert.innerHTML = 'Senha com mínimo de 6 dígitos!';
         }
         if (password2.value !== passwordrepet.value) {
           usuarioAlert.setAttribute('style', 'display: block');
