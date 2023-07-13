@@ -71,23 +71,23 @@ Com o trio para trabalhar com git foi um desafio que superamos, muitos commits e
 O aplicativo foi tomando forma e com isso fizemos algumas alterações, principalmente no CSS para ficar mais interessante para o usuário. Fizemos responsividade usando o Media Query para fazer os ajustes e deixar o app responsivo para diferentes formatos de telas.
 
 
-<strong> <center> TELA HOME DE DESKTOP </center> </strong>
+<h4 align='center'>  TELA HOME DE DESKTOP  </h4>
 
 ![desktop1](./src/imagens/desktop1.png)
 
-<strong> <center>TELA DE CADASTRO DESKTOP </center> </strong>
+<h4 align='center'> TELA DE CADASTRO DESKTOP  </h4>
 
 ![desktop2](./src/imagens/desktop2.png)
 
-<strong> <center>TELA DE FEED DESKTOP </center> </strong>
+<h4 align='center'> TELA DE FEED DESKTOP  </h4>
 
 ![feed](./src/imagens/feed.png)
 
-<strong> <center> TELA HOME PARA MOBILE </center> </strong>
+<h4 align='center'>  TELA HOME PARA MOBILE  </h4>
 
 ![homemobile](./src/imagens/homemobile.png)
 
-<strong> <center> TELA FEED PARA MOBILE </center> </strong>
+<h4 align='center'>  TELA FEED PARA MOBILE  </h4>
 
 ![feedmobile](./src/imagens/feedmobile.jpeg)
 
