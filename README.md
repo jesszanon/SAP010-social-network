@@ -72,14 +72,19 @@ O aplicativo foi tomando forma e com isso fizemos algumas alterações, principa
 
 
 TELA HOME DE DESKTOP
+
 ![desktop1](./src/imagens/desktop1.png)
 TELA DE CADASTRO DESKTOP
+
 ![desktop2](./src/imagens/desktop2.png)
 TELA DE FEED DESKTOP
+
 ![feed](./src/imagens/feed.png)
 TELA HOME PARA MOBILE
+
 ![homemobile](./src/imagens/homemobile.png)
 TELA FEED PARA MOBILE
+
 ![feedmobile](./src/imagens/feedmobile.jpeg)
 
 ## 4. Teste de Usabilidade
